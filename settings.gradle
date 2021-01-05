@@ -4,7 +4,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'mactracker'
-include 'client'
-include 'manager'
-include 'domain'
+include ('client', 'manager', 'domain')
 
