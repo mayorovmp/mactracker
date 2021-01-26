@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.0'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'org.springframework.boot' version "${springBootVer}"
+	id 'io.spring.dependency-management' version "${dependencyManagementVer}"
 	id 'java'
 }
 
@@ -14,21 +14,22 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
-	def swaggerVersion = '2.9.2'
-	implementation group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion
-	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion
-	implementation project(':domain')
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVer
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVer
+
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVer
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVer
+
+	runtimeOnly group: 'org.postgresql', name: 'postgresql', version: postgresqlVer
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation project(path: ':domain')
 }
 
 test {

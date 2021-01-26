@@ -1,17 +1,27 @@
 plugins {
+    id 'org.springframework.boot' version "${springBootVer}"
+    id 'io.spring.dependency-management' version "${dependencyManagementVer}"
     id 'java'
 }
 
-group 'com.mactracker'
-version '1.0-SNAPSHOT'
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVer
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVer
 }
 
 test {

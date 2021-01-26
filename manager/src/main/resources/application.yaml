@@ -1,2 +1,5 @@
 swagger:
   enabled: true
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
