@@ -1,6 +1,5 @@
 package com.mactracker.manager.controllers;
 
-import com.mactracker.repository.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
