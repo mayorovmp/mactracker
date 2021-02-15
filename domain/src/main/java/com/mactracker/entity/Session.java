@@ -4,29 +4,25 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.sql.Timestamp;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
 @Entity
+@Table(name = "session")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "option")
+@SuperBuilder
 @NoArgsConstructor
-public class Option {
-
+public class Session {
     @Id
-    @Column(name = "id")
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @Column(name = "id")
     protected Long id;
-
-    @Column(name = "name")
-    protected String name;
-
-    @Column(name = "order")
-    protected String order;
 
     @Column(name = "user_id", insertable = false, updatable = false)
     protected Long userId;
@@ -35,6 +31,9 @@ public class Option {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected User user;
 
-    @OneToMany(mappedBy = "option")
-    protected Set<TrackStatus> statuses;
+    @Column(name = "token")
+    protected String token;
+
+    @Column(name = "created")
+    private ZonedDateTime created;
 }

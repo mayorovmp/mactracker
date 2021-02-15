@@ -11,22 +11,16 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(name = "track")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "option")
 @NoArgsConstructor
-public class Option {
+public class Track {
 
     @Id
-    @Column(name = "id")
-    @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @Column(name = "id")
     protected Long id;
-
-    @Column(name = "name")
-    protected String name;
-
-    @Column(name = "order")
-    protected String order;
 
     @Column(name = "user_id", insertable = false, updatable = false)
     protected Long userId;
@@ -35,6 +29,18 @@ public class Option {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     protected User user;
 
-    @OneToMany(mappedBy = "option")
+    @OneToMany(mappedBy = "track")
     protected Set<TrackStatus> statuses;
+
+    @Column(name = "code")
+    protected String code;
+
+    @Column(name = "full_name")
+    protected String fullName;
+
+    @Column(name = "phone")
+    protected String phone;
+
+    @Column(name = "comment")
+    protected String comment;
 }
