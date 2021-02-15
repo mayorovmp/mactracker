@@ -28,7 +28,9 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
 
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation project(path: ':domain')
 }
 
